@@ -1,0 +1,15 @@
+@import './variables';
+
+// desktop
+@mixin desktop {
+    @media screen and (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+}
+
+// mobile
+@mixin mobile {
+    @media screen and (max-width: #{$screen-sm-max}) {
+        @content;
+    }
+}

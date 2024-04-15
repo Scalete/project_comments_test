@@ -1,0 +1,10 @@
+// resize mixin for value
+// Example:
+// margin: 0 auto res(31, 64) - margin: 0 auto calc(64px + (31 - 64) * ((100vw - 375px) / (1440 - 375)))
+@function res($minValue, $maxValue, $symbol: plus, $minWidth: 375, $maxWidth: 1440) {
+    @if $symbol == plus {
+        @return calc(#{$minValue}px + (#{$maxValue} - #{$minValue}) * ((100vw - #{$minWidth}px) / (#{$maxWidth} - #{$minWidth})));
+    } @else {
+        @return calc(-1 * (#{$minValue}px + (#{$maxValue} - #{$minValue}) * ((100vw - #{$minWidth}px) / (#{$maxWidth} - #{$minWidth}))));
+    }
+}
