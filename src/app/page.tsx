@@ -18,7 +18,7 @@ const Home: FC = () => {
           </div>
         </div>
 
-        <AddComment/>
+        <AddComment isReply={false} setIsReply={undefined}/>
     </div>
     
     

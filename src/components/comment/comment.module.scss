@@ -1,10 +1,14 @@
 @import '@/styles/variables';
 @import '@/styles/media-queryes';
 
+.container {
+    width: 100%;
+}
+
 .comment {
     display: flex;
-    gap: 24px;
     padding: 24px;
+    gap: 24px;
     min-height: 167px;
     background-color: $white;
     border-radius: 8px;
@@ -21,6 +25,16 @@
 
         svg {
             cursor: pointer;
+
+            path {
+                transition: $fast fill;
+            }
+
+            &:hover {
+                path {
+                    fill: $blue;
+                }
+            }
         }
 
         span {
@@ -36,6 +50,19 @@
         flex-direction: column;
         gap: 15px;
         width: 100%;
+
+        textarea {
+            width: 100%;
+            min-height: 96px;
+            padding: 12px 24px;
+            resize: none;
+            border: $lighter-gray 1px solid;
+            border-radius: 8px;
+    
+            &:focus {
+                outline: 1px solid $blue;
+            }
+        }
     }
 
     .commentHeader {
@@ -56,6 +83,16 @@
 
         span {
             color: $gray-blue;
+        }
+
+        strong {
+            font-size: 13px;
+            line-height: 1.15;
+            font-weight: 500;
+            background-color: $blue;
+            padding: 1px 6px;
+            color: $white;
+            border-radius: 2px;
         }
     }
 
