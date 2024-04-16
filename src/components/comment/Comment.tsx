@@ -5,6 +5,7 @@ import styles from './comment.module.scss';
 import Image from 'next/image';
 import AddComment from '../add-comment/AddComment';
 import Modal from '../modal/Modal';
+import { ICommentAndReplyProps, ICommentProps, IReplyProps } from '@/interfaces/interfaces';
 
 const CommentMobile: FC<{isUser: boolean, isReply: boolean, setIsReply: any, setIsEdit: any}> = ({isUser, isReply, setIsReply, setIsEdit}) => {
 
@@ -32,9 +33,9 @@ const CommentMobile: FC<{isUser: boolean, isReply: boolean, setIsReply: any, set
     )
 }
 
-const Comment: FC = () => {
+const Comment: FC<ICommentAndReplyProps> = ({comment, reply}) => {
 
-    const [isUser, setIsUser] = useState(true);
+    const [isUser, setIsUser] = useState(false);
     const [isReply, setIsReply] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -44,16 +45,16 @@ const Comment: FC = () => {
             <div className={styles.comment}>
                 <div className={`${styles.commentVote} ${styles.commentVoteDesktop}`}>
                     <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg"><path d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z" fill="#C5C6EF"/></svg>
-                    <span>12</span>
+                    <span>{comment?.score || reply?.score}</span>
                     <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg"><path d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z" fill="#C5C6EF"/></svg>
                 </div>
                 <div className={styles.commentWrapper}>
                     <div className={styles.commentHeader}>
                         <div className={styles.commentHeaderInfo}>
-                            <Image src={'/images/avatars/image-amyrobson.png'} width={32} height={32} alt={'avatar'}/>
-                            <b>amyrobson</b>
+                            <Image src={(comment?.user?.image?.png || reply?.user?.image?.png) as string} width={32} height={32} alt={'avatar'}/>
+                            <b>{comment?.user?.username || reply?.user?.username}</b>
                             <strong>you</strong>
-                            <span>1 month ago</span>
+                            <span>{comment?.date_comment || reply?.date_comment}</span>
                         </div>
                         {
                             !isUser? (
@@ -71,10 +72,10 @@ const Comment: FC = () => {
                     </div>
                     {
                         isEdit? (
-                            <textarea name="user-comment" id="user-comment" placeholder='Add a comment…'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, facere nam aperiam aliquid praesentium voluptatum quia odit laboriosam doloribus suscipit aut? Recusandae sed quo tempora deleniti harum quam et aspernatur!</textarea>
+                            <textarea name="user-comment" id="user-comment" placeholder='Add a comment…'>{comment?.content || reply?.content}</textarea>
                         ): (
                             <div className={styles.commentText}>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla consectetur perspiciatis harum fugit porro nostrum veniam! Dolores, tempore aperiam dolorem voluptatum ipsa ab temporibus doloremque quos cum distinctio, magni id.
+                                {comment?.content || reply?.content}
                             </div>
                         )
                     }
