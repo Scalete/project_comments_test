@@ -9,7 +9,7 @@ html {
 
 body {
     position: relative;
-    min-width: 1600px;
+    min-width: 375px;
     width: 100%;
     overflow-x: hidden;
 }
@@ -34,6 +34,7 @@ a {
 
 button {
     background-color: transparent;
+    font-family: inherit;
     cursor: pointer;
 }
 

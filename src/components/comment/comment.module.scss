@@ -1,0 +1,96 @@
+@import '@/styles/variables';
+
+.comment {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    max-width: 730px;
+    min-height: 167px;
+    background-color: $white;
+    border-radius: 8px;
+
+    .commentVote {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-height: 100px;
+        padding: 10px 5px;
+        background-color: $gray;
+        border-radius: 10px;
+
+        svg {
+            cursor: pointer;
+        }
+
+        span {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.18;
+            color: $blue;
+        }
+    }
+
+    .commentWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .commentHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .commentHeaderInfo{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        b {
+            line-height: 1.18;
+            color: $dark-blue;
+        }
+
+        span {
+            color: $gray-blue;
+        }
+    }
+
+    .commentHeaderReply {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+
+        span {
+            font-weight: 500;
+            color: $blue;
+        }
+    }
+
+    .commentHeaderActions {
+        display: flex;
+        gap: 24px;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            &:first-child {
+                color: $red;
+            }
+
+            &:last-child {
+                color: $blue;
+            }
+        }
+    }
+
+    .commentText {
+        color: $gray-blue;
+    }
+}
