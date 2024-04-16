@@ -1,0 +1,30 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: res(16, 20);
+
+    .comment {
+        display: flex;
+        flex-direction: column;
+        gap: res(16, 20);
+        max-width: 730px;
+    }
+
+    .replies {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: res(16, 24);
+        margin-left: res(0, 43);
+        padding-left: res(16, 43);
+        border-left: $lighter-gray solid 2px;
+    }
+}

@@ -35,6 +35,8 @@ a {
 button {
     background-color: transparent;
     font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
     cursor: pointer;
 }
 
@@ -70,6 +72,12 @@ img {
 
 svg {
     display: block;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
 }
 
 [tabindex],

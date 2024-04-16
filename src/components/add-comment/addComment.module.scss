@@ -1,0 +1,33 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.form {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: res(16, 24);
+    margin-top: res(16, 20);
+    background-color: $white;
+    border-radius: 8px;
+
+    img {
+        min-width: 40px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 96px;
+        padding: 12px 24px;
+        resize: none;
+        border: $lighter-gray 1px solid;
+        border-radius: 8px;
+
+        &:focus {
+            outline: none !important;
+        }
+    }
+
+    button {
+        min-width: 104px;
+    }
+}

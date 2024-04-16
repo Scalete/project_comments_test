@@ -1,3 +1,21 @@
+@import '@/styles/variables';
+
 .action {
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 12px 0;
+    color: $white;
+
+    &.blue {
+        background-color: $blue;
+    }
+
+    &.red {
+        background-color: $red;
+    }
+
+    &.gray {
+        background-color: $gray-blue;
+    }
 
 }
