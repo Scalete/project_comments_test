@@ -1,13 +1,27 @@
+"use client"
+
 import Comment from '@/components/comment/Comment';
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import styles from './home.module.scss';
 import AddComment from '@/components/add-comment/AddComment';
 import { IComment, IReply } from '@/interfaces/interfaces';
-import { getComments } from '@/lib/actions/comment-actions';
+import { useSelector } from 'react-redux';
+import { useComments } from '@/redux/comments/selectors';
+import { useAppDispatch } from '@/redux/store';
+import { fetchComments } from '@/redux/comments/asyncAction';
+import { useUser } from '@/redux/user/selectors';
+import { fetchUser } from '@/redux/user/asyncAction';
 
-const Home: FC = async () => {
+const Home: FC = () => {
 
-  const comments = await getComments();
+  const {comments} = useSelector(useComments);
+  const {user} = useSelector(useUser);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchComments());
+    dispatch(fetchUser());
+  }, [])
 
   const renderComments = () => {
     return comments.map((comment: IComment, i: number) => (
