@@ -9,23 +9,21 @@ import { useSelector } from 'react-redux';
 import { useComments } from '@/redux/comments/selectors';
 import { useAppDispatch } from '@/redux/store';
 import { fetchComments } from '@/redux/comments/asyncAction';
-import { useUser } from '@/redux/user/selectors';
 import { fetchUser } from '@/redux/user/asyncAction';
 
 const Home: FC = () => {
 
-  const {comments} = useSelector(useComments);
-  const {user} = useSelector(useUser);
+  const {comments, statusAddComment, statusDeleteComment} = useSelector(useComments);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchComments());
     dispatch(fetchUser());
-  }, [])
+  }, [statusAddComment, statusDeleteComment])
 
   const renderComments = () => {
     return comments.map((comment: IComment, i: number) => (
-      <div key={i} className={styles.comment}>
+      <div key={i} className={`${styles.comment}`}>
         <Comment comment={comment}/>
         <div className={styles.replies}>
           {

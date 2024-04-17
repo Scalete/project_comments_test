@@ -1,14 +1,15 @@
 import styles from './modal.module.scss';
 
 type ModalProps = {
+    _id: string;
     title: string;
     text: string;
     isOpen: boolean;
     onClose: () => void;
-    onDelete: () => void;
+    onDelete: (_id: string) => void;
   };
   
-const Modal: React.FC<ModalProps> = ({ title, text, isOpen, onClose, onDelete }) => {
+const Modal: React.FC<ModalProps> = ({ title, text, isOpen, onClose, onDelete, _id }) => {
     if (!isOpen) return null;
 
     return (
@@ -18,7 +19,7 @@ const Modal: React.FC<ModalProps> = ({ title, text, isOpen, onClose, onDelete })
                 <p>{text}</p>
                 <div className={styles.modalButtons}>
                     <button className='action gray' onClick={onClose}>NO, CANCEL</button>
-                    <button className='action red' onClick={onDelete}>YES, DELETE</button>
+                    <button className='action red' onClick={() => onDelete(_id)}>YES, DELETE</button>
                 </div>
             </div>
         </div>

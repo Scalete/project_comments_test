@@ -1,5 +1,5 @@
 export interface IUser {
-    _id: number;
+    _id?: string;
     image: {
       png: string;
       webp: string;
@@ -8,7 +8,7 @@ export interface IUser {
 }
   
 export interface IComment {
-    _id: number;
+    _id?: string;
     content: string;
     date_comment: string;
     score: number;
@@ -17,7 +17,7 @@ export interface IComment {
 }
 
 export interface IReply {
-    _id: number;
+    _id?: string;
     content: string;
     date_comment: string;
     score: number;

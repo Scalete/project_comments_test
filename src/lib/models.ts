@@ -42,8 +42,15 @@ const userSchema = new mongoose.Schema(
           type: String,
           required: true,
         },
-        img: {
-          type: String,
+        image: {
+          png: {
+            type: String,
+            required: true,
+          },
+          webp: {
+              type: String,
+              required: true,
+          },
         },
       },
       replies: [{
@@ -67,8 +74,15 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
           },
-          img: {
-            type: String,
+          image: {
+            png: {
+              type: String,
+              required: true,
+            },
+            webp: {
+                type: String,
+                required: true,
+            },
           },
         },
       }],
